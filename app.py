@@ -35,27 +35,17 @@ if st.sidebar.button("Predict Salary"):
 # Show graph
 if st.checkbox("Show Prediction Graph"):
     try:
-        import matplotlib.pyplot as plt
+        X = np.arange(0, 50).reshape(-1, 1)
+        y = model.predict(X)
 
-X = np.arange(0, 50).reshape(-1, 1)
-y = model.predict(X)
+        fig, ax = plt.subplots()
+        ax.plot(X, y)
+        ax.set_xlabel("Experience")
+        ax.set_ylabel("Salary")
+        plt.grid()
+        ax.set_title("Salary vs Experience")
 
-fig, ax = plt.subplots()
-
-# Line (prediction)
-ax.plot(X, y, color='blue', linewidth=2, label='Prediction Line')
-
-# Scatter (optional example points)
-ax.scatter(X, y, color='red', alpha=0.5, label='Data Points')
-
-ax.set_xlabel("Experience")
-ax.set_ylabel("Salary")
-ax.set_title("Salary vs Experience")
-
-ax.legend()
-ax.grid(True)
-
-st.pyplot(fig)
+        st.pyplot(fig)
     except Exception as e:
         st.error(f"Graph error: {e}")
 
