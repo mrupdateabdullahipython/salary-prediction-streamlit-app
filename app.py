@@ -42,6 +42,7 @@ if st.checkbox("Show Prediction Graph"):
         ax.plot(X, y)
         ax.set_xlabel("Experience")
         ax.set_ylabel("Salary")
+        plt.grid()
         ax.set_title("Salary vs Experience")
 
         st.pyplot(fig)
