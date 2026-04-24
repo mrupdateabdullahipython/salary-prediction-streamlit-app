@@ -28,7 +28,11 @@ st.metric("Selected Experience", f"{experience} years")
 if st.sidebar.button("Predict Salary"):
     try:
         prediction = model.predict(np.array([[experience]]))
-       st.success(f"Estimated Salary: ₦{real_salary:,.0f}")
+        
+# Multiply by 1000
+real_salary = prediction[0] * 1000
+
+st.success(f"Estimated Salary: ₦{real_salary:,.0f}")
     except Exception as e:
         st.error(f"Prediction error: {e}")
 
