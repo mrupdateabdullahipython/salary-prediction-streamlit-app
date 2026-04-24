@@ -43,8 +43,10 @@ if st.checkbox("Show Prediction Graph"):
         ax.set_xlabel("Experience")
         ax.set_ylabel("Salary")
         plt.grid()
+        ax.set_facecolor('#f5f5f5')  # background
         plt.scatter(X,y,color='green',edgecolor='purple',alpha=0.5, label='Data Points')
         ax.set_title("Salary vs Experience")
+        ax.scatter(X_train, y_train, color='orange', label='Training Data')
 
         st.pyplot(fig)
     except Exception as e:
