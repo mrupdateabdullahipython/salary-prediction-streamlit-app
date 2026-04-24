@@ -35,17 +35,27 @@ if st.sidebar.button("Predict Salary"):
 # Show graph
 if st.checkbox("Show Prediction Graph"):
     try:
-        X = np.arange(0, 50).reshape(-1, 1)
-        y = model.predict(X)
+        import matplotlib.pyplot as plt
 
-        fig, ax = plt.subplots()
-        ax.plot(X, y)
-        ax.set_xlabel("Experience")
-        ax.set_ylabel("Salary")
-        plt.grid()
-        ax.set_title("Salary vs Experience")
+X = np.arange(0, 50).reshape(-1, 1)
+y = model.predict(X)
 
-        st.pyplot(fig)
+fig, ax = plt.subplots()
+
+# Line (prediction)
+ax.plot(X, y, color='blue', linewidth=2, label='Prediction Line')
+
+# Scatter (optional example points)
+ax.scatter(X, y, color='red', alpha=0.5, label='Data Points')
+
+ax.set_xlabel("Experience")
+ax.set_ylabel("Salary")
+ax.set_title("Salary vs Experience")
+
+ax.legend()
+ax.grid(True)
+
+st.pyplot(fig)
     except Exception as e:
         st.error(f"Graph error: {e}")
 
@@ -53,5 +63,5 @@ if st.checkbox("Show Prediction Graph"):
 st.markdown("---")
 st.markdown("### About")
 st.write(
-    "This app uses a Linear Regression model to predict salary based on years of experience."
+    "This app uses a Linear Regression model to predict salary based on years of experience. An interactive Machine Learning web application that predicts salary using Linear Regression. Built with Python and deployed using Streamlit, this project highlights practical ML skills including data cleaning, model building, and deployment."
 )
