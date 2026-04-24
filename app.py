@@ -39,11 +39,11 @@ if st.checkbox("Show Prediction Graph"):
         y = model.predict(X)
 
         fig, ax = plt.subplots()
-        ax.plot(X, y,color='blue',marker='*')
+        ax.plot(X, y,color='blue',marker='*',linewidth=2, label='Prediction Line')
         ax.set_xlabel("Experience")
         ax.set_ylabel("Salary")
         plt.grid()
-        plt.scatter(X,y,color='green',edgecolor='purple')
+        plt.scatter(X,y,color='green',edgecolor='purple',alpha=0.5, label='Data Points')
         ax.set_title("Salary vs Experience")
 
         st.pyplot(fig)
